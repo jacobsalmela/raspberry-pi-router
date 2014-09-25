@@ -1,0 +1,16 @@
+auto lo
+auto br0
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+allow-hotplug eth0
+iface wlan0 inet manual
+
+iface br0 inet dhcp
+        bridge_fd 1
+        bridge_hello 3
+        bridge_maxage 10
+        bridge_stp off
+        bridge_ports eth0 wlan0
